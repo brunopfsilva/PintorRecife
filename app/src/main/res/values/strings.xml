@@ -2,7 +2,7 @@
     <string name="app_name">Pintor Recife</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_title">Pintor Recife</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Sair</string>
@@ -11,5 +11,6 @@
 Uma empresa sólida com diversos prêmios por excelência em qualidade, no cumprimento dos cronogramas e no treinamento de seus funcionários. Uma empresa padrão no segmento de pintura, referência em organização e limpeza.
 Solidez, satisfação e tranquilidade dos clientes, tudo isso não é julgado simplesmente pelo orçamento e sim pela experiência de trabalho no mercado de pintura.
     </string>
+    <string name="app_phone">988735652</string>
 
 </resources>

@@ -9,41 +9,55 @@
     tools:context=".MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/profile_image"
-        android:padding="16dp"
-        android:text="Atendimento personalizado com qualidade na execução dos trabalhos, esse é o grande diferencial da Basso Pinturas em quase meio século de existência, seja no atendimento a clientes jurídicos ou físicos em vários segmentos da construção civil como na pintura nova e na repintura.
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/profile_image"
+                android:padding="16dp"
+                android:text="Atendimento personalizado com qualidade na execução dos trabalhos, esse é o grande diferencial da Basso Pinturas em quase meio século de existência, seja no atendimento a clientes jurídicos ou físicos em vários segmentos da construção civil como na pintura nova e na repintura.
 Uma empresa sólida com diversos prêmios por excelência em qualidade, no cumprimento dos cronogramas e no treinamento de seus funcionários. Uma empresa padrão no segmento de pintura, referência em organização e limpeza.
 Solidez, satisfação e tranquilidade dos clientes, tudo isso não é julgado simplesmente pelo orçamento e sim pela experiência de trabalho no mercado de pintura."
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
 
-    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/profile_image"
-        android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:padding="8dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/inicio_ft"
-        app:civ_border_color="#FF000000"
-        app:civ_border_width="1dp" />
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/profile_image"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:padding="8dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/inicio_ft"
+                app:civ_border_color="#FF000000"
+                app:civ_border_width="1dp" />
 
-    <android.support.v4.widget.ContentLoadingProgressBar
-        android:id="@+id/progress"
-        style="@style/Widget.AppCompat.ProgressBar"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_gravity="center"
-        android:visibility="invisible"
-        tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="218dp" />
+            <android.support.v4.widget.ContentLoadingProgressBar
+                android:id="@+id/progress"
+                style="@style/Widget.AppCompat.ProgressBar"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:visibility="invisible"
+                tools:layout_editor_absoluteX="155dp"
+                tools:layout_editor_absoluteY="218dp" />
+
+        </RelativeLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+
 
 </RelativeLayout>

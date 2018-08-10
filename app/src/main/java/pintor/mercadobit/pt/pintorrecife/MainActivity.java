@@ -15,6 +15,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ProgressBar;
 
+import cn.carbs.android.library.MDDialog;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -107,6 +109,32 @@ public class MainActivity extends AppCompatActivity
             startActivity(new Intent(this,GaleriaActivity.class));
             finish();
         } else if (id == R.id.nav_slideshow) {
+
+            new MDDialog.Builder(MainActivity.this)
+                    .setTitle("Meios de contacto")
+                    .setContentView(R.layout.activity_contacto )
+                    .setNegativeButton(" - ", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            pb.setVisibility(View.VISIBLE);
+                            startActivity(new Intent(getBaseContext(),MainActivity.class));
+                            finish();
+                        }
+                    })
+                    .setPositiveButton("ok", new View.OnClickListener() {
+
+
+                        @Override
+                        public void onClick(View v) {
+                            pb.setVisibility(View.VISIBLE);
+                            startActivity(new Intent(getBaseContext(),MainActivity.class));
+                            finish();
+                        }
+
+                    })
+
+                    .create()
+                    .show();
 
         } else if (id == R.id.nav_share) {
 
