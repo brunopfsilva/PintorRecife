@@ -20,7 +20,7 @@ import cn.carbs.android.library.MDDialog;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    ProgressBar pb;;
+    ProgressBar pb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,6 +137,12 @@ public class MainActivity extends AppCompatActivity
                     .show();
 
         } else if (id == R.id.nav_share) {
+
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, "https://www.facebook.com/pedrotoic.sdc.");
+            sendIntent.setType("text/plain");
+            startActivity(sendIntent);
 
         }
 

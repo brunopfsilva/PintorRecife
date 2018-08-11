@@ -3,23 +3,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".contactoActivity">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:foregroundGravity="center"
-        android:layout_centerVertical="true"
+        android:layout_alignParentTop="true"
         android:layout_toStartOf="@+id/id_telefone"
+        android:foregroundGravity="center"
         android:src="@drawable/ic_action_phone" />
 
     <TextView
         android:id="@+id/id_telefone"
-        android:textSize="22sp"
-        android:textAlignment="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="@string/app_phone" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/app_phone"
+        android:textAlignment="center"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/txt_Contacto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="84dp"
+        android:padding="16dp"
+        android:text="Apartamentos, Lojas,Casas,Pinturas de fachada,Retoques em geral, Escritório,Portas grades,Emasamento com ótimo acabamento,Texturas, em geral e etc    " />
 </RelativeLayout>
