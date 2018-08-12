@@ -24,9 +24,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/profile_image"
                 android:padding="16dp"
-                android:text="Atendimento personalizado com qualidade na execução dos trabalhos, esse é o grande diferencial da Basso Pinturas em quase meio século de existência, seja no atendimento a clientes jurídicos ou físicos em vários segmentos da construção civil como na pintura nova e na repintura.
-Uma empresa sólida com diversos prêmios por excelência em qualidade, no cumprimento dos cronogramas e no treinamento de seus funcionários. Uma empresa padrão no segmento de pintura, referência em organização e limpeza.
-Solidez, satisfação e tranquilidade dos clientes, tudo isso não é julgado simplesmente pelo orçamento e sim pela experiência de trabalho no mercado de pintura."
+                android:text="@string/text_inicio"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
 
