@@ -27,6 +27,8 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     implementation 'cn.carbs.android:MDDialog:1.0.0'
+    implementation 'com.koushikdutta.ion:ion:2.+'
+
 
 
 
