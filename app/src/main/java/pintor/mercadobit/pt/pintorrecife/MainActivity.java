@@ -159,6 +159,12 @@ public class MainActivity extends AppCompatActivity
             sendIntent.setType("text/plain");
             startActivity(sendIntent);
 
+        } else if (id == R.id.nav_slideshow) {
+
+            pb.setVisibility(View.VISIBLE);
+            startActivity(new Intent(this,wbActivity.class));
+            finish();
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

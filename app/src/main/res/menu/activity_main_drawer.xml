@@ -13,6 +13,11 @@
             android:icon="@drawable/ic_action_photos"
             android:title="Galeria" />
         <item
+            android:id="@+id/nav_chat"
+            android:icon="@drawable/ic_action_message"
+            android:title="Chat" />
+
+        <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_action_phone"
             android:title="Contato" />
