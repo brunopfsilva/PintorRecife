@@ -22,6 +22,7 @@
         android:layout_centerHorizontal="true"
         android:text="@string/app_phone"
         android:textAlignment="center"
+        android:onClick="callme"
         android:textSize="22sp" />
 
     <TextView
