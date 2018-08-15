@@ -23,12 +23,12 @@
             android:title="Contato" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Social media">
         <menu>
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:title="Partilhar este app" />
         </menu>
     </item>
 

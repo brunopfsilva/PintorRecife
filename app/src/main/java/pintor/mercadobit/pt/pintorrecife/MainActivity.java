@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity
             sendIntent.setType("text/plain");
             startActivity(sendIntent);
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_chat) {
 
             pb.setVisibility(View.VISIBLE);
             startActivity(new Intent(this,wbActivity.class));
