@@ -19,8 +19,9 @@ import pintor.mercadobit.pt.pintorrecife.R;
 import pintor.mercadobit.pt.pintorrecife.model.Galeria;
 import pintor.mercadobit.pt.pintorrecife.model.ImageAdapter;
 import pintor.mercadobit.pt.pintorrecife.presenter.PresenterGaleria;
+import pintor.mercadobit.pt.pintorrecife.tasks.Padrao;
 
-public class GaleriaActivity extends AppCompatActivity {
+public class GaleriaActivity extends AppCompatActivity implements Padrao{
 
 
     @BindView(R.id.lstgaleria) ListView listView;
@@ -41,16 +42,16 @@ public class GaleriaActivity extends AppCompatActivity {
 
     }
 
-    public void initViews(){
 
-
+    @Override
+    public void initViews() {
         ActionBar ab = getSupportActionBar();
         if (ab != null) {
             ab.setDisplayHomeAsUpEnabled(true);
         }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-    //    setSupportActionBar(toolbar);
+        //    setSupportActionBar(toolbar);
         pb.setVisibility(View.VISIBLE);
 
         ArrayList<Galeria> galerias = new ArrayList<Galeria>();
@@ -64,12 +65,19 @@ public class GaleriaActivity extends AppCompatActivity {
         }
 
         listView.setAdapter(new ImageAdapter(this,galerias));
+    }
 
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        pb.setVisibility(View.VISIBLE);
+        startActivity(new Intent(this,MainActivity.class));
+        finish();
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
+    public boolean onContextItemSelected(MenuItem item) {
         int id = item.getItemId();
 
         if (id == android.R.id.home) {

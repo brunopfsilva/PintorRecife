@@ -1,8 +1,10 @@
 package pintor.mercadobit.pt.pintorrecife.tasks;
 
+import android.view.MenuItem;
+
 public interface Padrao {
 
-    interface View{
+   /* interface Views{
 
     }
     interface Presenter{
@@ -10,5 +12,9 @@ public interface Padrao {
     }
     interface Model{
 
-    }
+    } */
+
+    public void onBackPressed();
+    public void initViews();
+    public boolean onOptionsItemSelected(MenuItem item);
 }
