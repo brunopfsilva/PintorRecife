@@ -1,4 +1,6 @@
-package pintor.mercadobit.pt.pintorrecife;
+package pintor.mercadobit.pt.pintorrecife.model;
+
+import pintor.mercadobit.pt.pintorrecife.R;
 
 public class Galeria  {
 

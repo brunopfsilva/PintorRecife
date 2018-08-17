@@ -24,9 +24,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GaleriaActivity" />
-        <activity android:name=".contactoActivity" />
-        <activity android:name=".wbActivity"></activity>
+        <activity android:name=".views.GaleriaActivity" />
+        <activity android:name=".views.wbActivity"></activity>
     </application>
 
 </manifest>

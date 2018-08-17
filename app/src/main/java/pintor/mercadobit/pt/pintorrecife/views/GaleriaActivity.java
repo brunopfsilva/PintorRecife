@@ -1,4 +1,4 @@
-package pintor.mercadobit.pt.pintorrecife;
+package pintor.mercadobit.pt.pintorrecife.views;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBar;
@@ -12,16 +12,28 @@ import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import pintor.mercadobit.pt.pintorrecife.MainActivity;
+import pintor.mercadobit.pt.pintorrecife.R;
+import pintor.mercadobit.pt.pintorrecife.model.Galeria;
+import pintor.mercadobit.pt.pintorrecife.model.ImageAdapter;
+import pintor.mercadobit.pt.pintorrecife.presenter.PresenterGaleria;
+
 public class GaleriaActivity extends AppCompatActivity {
 
 
-    ListView listView;
-    ProgressBar pb;
+    @BindView(R.id.lstgaleria) ListView listView;
+    @BindView(R.id.progress) ProgressBar pb;
+    PresenterGaleria presenterGaleria;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_galaeria);
+        ButterKnife.bind(this);
 
+        //chamada do presenter
+        presenterGaleria = new PresenterGaleria(this);
 
         this.setTitle("Galeria");
         initViews();
@@ -39,9 +51,7 @@ public class GaleriaActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     //    setSupportActionBar(toolbar);
-        pb = (ProgressBar)findViewById(R.id.progress);
         pb.setVisibility(View.VISIBLE);
-        listView = (ListView)findViewById(R.id.lstgaleria);
 
         ArrayList<Galeria> galerias = new ArrayList<Galeria>();
 

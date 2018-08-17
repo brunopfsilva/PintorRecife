@@ -1,4 +1,4 @@
-package pintor.mercadobit.pt.pintorrecife;
+package pintor.mercadobit.pt.pintorrecife.views;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -18,15 +18,22 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import pintor.mercadobit.pt.pintorrecife.MainActivity;
+import pintor.mercadobit.pt.pintorrecife.R;
+
 public class wbActivity extends AppCompatActivity {
 
-    ProgressBar pb;
-    WebView wbchat;
+
+    @BindView(R.id.wbchat)WebView wbchat;
+    @BindView(R.id.progress)ProgressBar pb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wb);
+        ButterKnife.bind(this);
 
 
         initViews();
@@ -41,9 +48,9 @@ public class wbActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //    setSupportActionBar(toolbar);
-        pb = (ProgressBar)findViewById(R.id.progress);
+      //  pb = (ProgressBar)findViewById(R.id.progress);
         pb.setVisibility(View.INVISIBLE);
-        wbchat = (WebView)findViewById(R.id.wbchat);
+      //  wbchat = (WebView)findViewById(R.id.wbchat);
 
         WebSettings webSettings = wbchat.getSettings();
 

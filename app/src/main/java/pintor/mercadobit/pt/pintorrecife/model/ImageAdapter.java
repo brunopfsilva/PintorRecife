@@ -1,4 +1,4 @@
-package pintor.mercadobit.pt.pintorrecife;
+package pintor.mercadobit.pt.pintorrecife.model;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
+
+import pintor.mercadobit.pt.pintorrecife.R;
 
 public class ImageAdapter extends BaseAdapter {
 
