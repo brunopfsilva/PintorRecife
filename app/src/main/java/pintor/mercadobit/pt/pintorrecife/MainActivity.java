@@ -20,6 +20,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,6 +36,8 @@ public class MainActivity extends AppCompatActivity
     @BindView(R.id.progress) ProgressBar pb;
     PresenterMain presenterMain;
     View layout;
+    LayoutInflater inflater;
+    String pin;
 
    /** @BindView(R.id.inputPin) **/
     EditText inputPin;
@@ -89,6 +92,8 @@ public class MainActivity extends AppCompatActivity
 
         pb.setVisibility(View.VISIBLE);
 
+
+
     }
 
     @Override
@@ -121,11 +126,6 @@ public class MainActivity extends AppCompatActivity
             return true;
         }else if (id == R.id.action_pin) {
 
-            LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            layout = inflater.inflate(R.layout.custom_layout, null);
-            inputPin = (EditText)layout.findViewById(R.id.inputPin);
-
-
             getPin();
             return true;
         }
@@ -133,7 +133,14 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    public void getPin( ){
+    private String getViewContent(View root,int id){
+        EditText field = (EditText)root.findViewById(id);
+        return field.getText().toString();
+    }
+
+    public void getPin(){
+
+
 
         runOnUiThread(new Runnable() {
             @Override
@@ -141,27 +148,45 @@ public class MainActivity extends AppCompatActivity
 
 
                 new MDDialog.Builder(MainActivity.this)
-                        .setTitle("Meios de contacto")
+                        .setTitle("Validar PIN")
                         .setContentView(R.layout.layout_pin )
                         .setNegativeButton(" - ", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+
+
                                 pb.setVisibility(View.VISIBLE);
-
-                                String pin = inputPin.getText().toString().trim();
-                                presenterMain.sendpin(pin);
-
+                                startActivity(new Intent(getBaseContext(),MainActivity.class));
                                 finish();
+
+
+
                             }
                         })
-                        .setPositiveButton("ok", new View.OnClickListener() {
+                        .setPositiveButton("Enviar", new View.OnClickListener() {
+
 
 
                             @Override
                             public void onClick(View v) {
-                                pb.setVisibility(View.VISIBLE);
-                                startActivity(new Intent(getBaseContext(),MainActivity.class));
-                                finish();
+                                final View root = v.getRootView(); //pega o root do layout
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+
+                                        pb.setVisibility(View.VISIBLE);
+
+                                        pin = getViewContent(root,R.id.inputPin);
+
+                                        Toast.makeText(MainActivity.this, " "+pin, Toast.LENGTH_SHORT).show();
+
+                                        presenterMain.sendpin(pin);
+
+                                    }
+                                });
+
+
+                               // finish();
                             }
 
                         })
@@ -257,4 +282,14 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    public void pinMsg() {
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(getBaseContext(), "dados syncronizados", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
 }
