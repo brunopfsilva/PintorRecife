@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.widget.ProgressBar;
 
 import cn.carbs.android.library.MDDialog;
+import pintor.mercadobit.pt.pintorrecife.presenter.PresenterMain;
 import pintor.mercadobit.pt.pintorrecife.views.GaleriaActivity;
 import pintor.mercadobit.pt.pintorrecife.views.wbActivity;
 
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     ProgressBar pb;
+    PresenterMain presenterMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,8 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        //instancia de presente main
+        presenterMain = new PresenterMain(this);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -105,6 +109,9 @@ public class MainActivity extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             finish();
+            return true;
+        }else if (id == R.id.action_pin) {
+
             return true;
         }
 

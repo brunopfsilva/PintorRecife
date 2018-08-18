@@ -20,5 +20,6 @@
 
     </string>
     <string name="app_phone">988735652</string>
+    <string name="action_pin">Configurar PIN</string>
 
 </resources>
