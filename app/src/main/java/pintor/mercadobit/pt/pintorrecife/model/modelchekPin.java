@@ -19,7 +19,7 @@ import static android.content.Context.MODE_PRIVATE;
 public class modelchekPin {
 
     @SuppressLint("StaticFieldLeak")
-    private class get_pin_from_server extends AsyncTask<String, Void, Void> {
+    public static class get_pin_from_server extends AsyncTask<String, Void, Void> {
 
         ProgressDialog dialog;
         SharedPreferences.Editor preferencesput;
@@ -53,6 +53,8 @@ public class modelchekPin {
                                 if (result.get("retorno").getAsString().equals("YES")){
 
                                     preferencesput = mainActivity.getSharedPreferences("USER_INFORMATION",MODE_PRIVATE).edit();
+                                    preferencesput.putString("email",result.get("email").getAsString());
+                                    preferencesput.apply();
 
                                 }
 

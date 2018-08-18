@@ -21,5 +21,7 @@
     </string>
     <string name="app_phone">988735652</string>
     <string name="action_pin">Configurar PIN</string>
+    <string name="txtTitulo_pin">Digitar Pin</string>
+    <string name="txtInputPin">Por favor digite seu Pin</string>
 
 </resources>

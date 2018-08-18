@@ -18,8 +18,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import cn.carbs.android.library.MDDialog;
 import pintor.mercadobit.pt.pintorrecife.presenter.PresenterMain;
 import pintor.mercadobit.pt.pintorrecife.views.GaleriaActivity;
@@ -28,13 +31,19 @@ import pintor.mercadobit.pt.pintorrecife.views.wbActivity;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    ProgressBar pb;
+
+    @BindView(R.id.progress) ProgressBar pb;
     PresenterMain presenterMain;
+    View layout;
+
+   /** @BindView(R.id.inputPin) **/
+    EditText inputPin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(MainActivity.this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //instancia de presente main
@@ -77,7 +86,7 @@ public class MainActivity extends AppCompatActivity
 
     public void initViews(){
 
-        pb = (ProgressBar)findViewById(R.id.progress);
+
         pb.setVisibility(View.VISIBLE);
 
     }
@@ -112,10 +121,59 @@ public class MainActivity extends AppCompatActivity
             return true;
         }else if (id == R.id.action_pin) {
 
+            LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            layout = inflater.inflate(R.layout.custom_layout, null);
+            inputPin = (EditText)layout.findViewById(R.id.inputPin);
+
+
+            getPin();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void getPin( ){
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+
+
+                new MDDialog.Builder(MainActivity.this)
+                        .setTitle("Meios de contacto")
+                        .setContentView(R.layout.layout_pin )
+                        .setNegativeButton(" - ", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                pb.setVisibility(View.VISIBLE);
+
+                                String pin = inputPin.getText().toString().trim();
+                                presenterMain.sendpin(pin);
+
+                                finish();
+                            }
+                        })
+                        .setPositiveButton("ok", new View.OnClickListener() {
+
+
+                            @Override
+                            public void onClick(View v) {
+                                pb.setVisibility(View.VISIBLE);
+                                startActivity(new Intent(getBaseContext(),MainActivity.class));
+                                finish();
+                            }
+
+                        })
+
+                        .create()
+                        .show();
+
+            }
+        });
+
+
+
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
