@@ -2,6 +2,7 @@ package pintor.mercadobit.pt.pintorrecife.model;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.widget.Toast;
@@ -9,6 +10,8 @@ import android.widget.Toast;
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
+
+import java.util.Arrays;
 
 import pintor.mercadobit.pt.pintorrecife.MainActivity;
 import pintor.mercadobit.pt.pintorrecife.presenter.PresenterMain;
@@ -18,15 +21,17 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class modelchekPin {
 
-    //@SuppressLint("StaticFieldLeak")
+    @SuppressLint("StaticFieldLeak")
     public static class get_pin_from_server extends AsyncTask<String, Void, Void> {
 
        // ProgressDialog dialog;
         SharedPreferences.Editor preferencesput;
 
-        private MainActivity mainActivity;
+        MainActivity mainActivity;
 
         PresenterMain presenterMain;
+
+        Context ctx;
 
         public get_pin_from_server(MainActivity mainActivity){
 
@@ -34,7 +39,7 @@ public class modelchekPin {
             //construtor para pode chamar o progress dialog
             this.mainActivity = mainActivity;
             presenterMain = new PresenterMain(mainActivity);
-            callserver();
+
 
         }
 
@@ -44,16 +49,17 @@ public class modelchekPin {
             Ion.getDefault(mainActivity).getConscryptMiddleware().enable(false); //remove erro IonConscrypt: Conscrypt initialization failed.
 
 
-
+            //corrigir erro unknow host exception
             Ion.with(mainActivity)
                     .load(Common.GET_PIN)
-                    .addHeader("Content-Type", "application/json")
-                    .setBodyParameter("pin", String.valueOf(pin))
+                    .addHeader("Content-Type", "text/html")
+                    .setBodyParameter("pin", Arrays.toString(pin))
                     .asJsonObject()
                     .setCallback(new FutureCallback<JsonObject>() {
                         @Override
                         public void onCompleted(Exception e, JsonObject result) {
 
+                            Toast.makeText(mainActivity, " "+e, Toast.LENGTH_LONG).show();
 
                             try{
 
@@ -72,7 +78,7 @@ public class modelchekPin {
 
                                 }catch (Exception ex){
 
-                                Toast.makeText(mainActivity, " Error ", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(mainActivity, " Error "+ex, Toast.LENGTH_SHORT).show();
                             }
 
                         }
