@@ -45,7 +45,7 @@ public class modelchekPin {
         }
 
         @Override
-        protected Void doInBackground(String... pin) {
+        protected Void doInBackground(final String... pin) {
 
             Ion.getDefault(mainActivity).getConscryptMiddleware().enable(false); //remove erro IonConscrypt: Conscrypt initialization failed.
 
@@ -53,24 +53,28 @@ public class modelchekPin {
             //corrigir erro unknow host exception
             Ion.with(mainActivity)
                     .load(Common.GET_PIN)
-                    .addHeader("Content-Type", "text/html")
-               //     .setBodyParameter("pin", Arrays.toString(pin))
-                    .asJsonArray()
-                    .setCallback(new FutureCallback<JsonArray>() {
+               //     .addHeader("Content-Type", "text/html")
+                    .setBodyParameter("pin", "1991")
+                    .asJsonObject()
+                    .setCallback(new FutureCallback<JsonObject>() {
                         @Override
-                        public void onCompleted(Exception e, JsonArray result) {
+                        public void onCompleted(Exception e, JsonObject result) {
 
-                            Toast.makeText(mainActivity, " "+e, Toast.LENGTH_LONG).show();
+                            Toast.makeText(mainActivity, " "+result, Toast.LENGTH_LONG).show();
 
 
-
-                            try{
+                          /*  try{
 
                                 for (int i = 0; i < result.size(); i++) {
 
                                     JsonObject obj = result.get(i).getAsJsonObject();
 
-                                    Toast.makeText(mainActivity, "Sucesso: "+obj.get("Pin").getAsString(), Toast.LENGTH_LONG).show();
+                                    if(Arrays.toString(pin).trim().equals(obj.get("Pin").getAsString())){
+                                        Toast.makeText(mainActivity, "Valor encontrado", Toast.LENGTH_SHORT).show();
+                                        presenterMain.resultpin();
+
+                                    }
+                                    Toast.makeText(mainActivity, "Sincronizando, aguarde por favor... ", Toast.LENGTH_LONG).show();
 
 
 
@@ -79,10 +83,10 @@ public class modelchekPin {
 
                             }catch (Exception ex){}
 
+*/
 
 
-
-                         /*   try{
+                            try{
 
 
                                 if (result.get("retorno").getAsString().equals("YES")){
@@ -99,9 +103,9 @@ public class modelchekPin {
 
                                 }catch (Exception ex){
 
-                                Toast.makeText(mainActivity, " Error "+ex, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(mainActivity, " Error "+ex, Toast.LENGTH_LONG).show();
                             }
-                    */
+
                         }
                     });
 
@@ -144,8 +148,5 @@ public class modelchekPin {
         }
     }
 
-    public static void callserver(){
-
-    }
 
 }

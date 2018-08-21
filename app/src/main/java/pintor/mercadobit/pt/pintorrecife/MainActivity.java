@@ -178,8 +178,6 @@ public class MainActivity extends AppCompatActivity
 
                                         pin = getViewContent(root,R.id.inputPin);
 
-                                        Toast.makeText(MainActivity.this, " "+pin, Toast.LENGTH_SHORT).show();
-
                                         presenterMain.sendpin(pin);
 
                                     }
@@ -218,31 +216,9 @@ public class MainActivity extends AppCompatActivity
             finish();
         } else if (id == R.id.nav_slideshow) {
 
-            new MDDialog.Builder(MainActivity.this)
-                    .setTitle("Meios de contacto")
-                    .setContentView(R.layout.activity_contacto )
-                    .setNegativeButton(" - ", new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            pb.setVisibility(View.VISIBLE);
-                            startActivity(new Intent(getBaseContext(),MainActivity.class));
-                            finish();
-                        }
-                    })
-                    .setPositiveButton("ok", new View.OnClickListener() {
 
+            showcontacts();
 
-                        @Override
-                        public void onClick(View v) {
-                            pb.setVisibility(View.VISIBLE);
-                            startActivity(new Intent(getBaseContext(),MainActivity.class));
-                            finish();
-                        }
-
-                    })
-
-                    .create()
-                    .show();
 
         } else if (id == R.id.nav_share) {
 
@@ -263,6 +239,37 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void showcontacts() {
+
+        new MDDialog.Builder(MainActivity.this)
+                .setTitle("Meios de contacto")
+                .setContentView(R.layout.activity_contacto )
+                .setNegativeButton(" - ", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        pb.setVisibility(View.VISIBLE);
+                        startActivity(new Intent(getBaseContext(),MainActivity.class));
+                        finish();
+                    }
+                })
+                .setPositiveButton("ok", new View.OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View v) {
+                        pb.setVisibility(View.VISIBLE);
+                        startActivity(new Intent(getBaseContext(),MainActivity.class));
+                        finish();
+                    }
+
+                })
+
+                .create()
+                .show();
+
+
     }
 
     public void callme(View view) {
