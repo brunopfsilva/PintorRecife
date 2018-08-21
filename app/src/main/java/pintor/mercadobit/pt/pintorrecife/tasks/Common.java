@@ -8,7 +8,8 @@ package pintor.mercadobit.pt.pintorrecife.tasks;
 public class Common {
 
     public static final String GETDADOS = "http://myhostapps-tk.umbler.net/api/pedro/v1/getdados.php";
-    public static final String GET_PIN = "http://myhostapps-tk.umbler.net/api/pedro/v1/getpin.php?pin=";
+   // public static final String GET_PIN = "http://myhostapps-tk.umbler.net/api/pedro/v1/getpin.php";
+    public static final String GET_PIN = "https://bruno-silva8.outsystemscloud.com/CarteiradeClientes/rest/api_mobile/getPin";
 
     //token
     public static final String token = "domtakeway";

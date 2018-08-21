@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
@@ -53,15 +54,35 @@ public class modelchekPin {
             Ion.with(mainActivity)
                     .load(Common.GET_PIN)
                     .addHeader("Content-Type", "text/html")
-                    .setBodyParameter("pin", Arrays.toString(pin))
-                    .asJsonObject()
-                    .setCallback(new FutureCallback<JsonObject>() {
+               //     .setBodyParameter("pin", Arrays.toString(pin))
+                    .asJsonArray()
+                    .setCallback(new FutureCallback<JsonArray>() {
                         @Override
-                        public void onCompleted(Exception e, JsonObject result) {
+                        public void onCompleted(Exception e, JsonArray result) {
 
                             Toast.makeText(mainActivity, " "+e, Toast.LENGTH_LONG).show();
 
+
+
                             try{
+
+                                for (int i = 0; i < result.size(); i++) {
+
+                                    JsonObject obj = result.get(i).getAsJsonObject();
+
+                                    Toast.makeText(mainActivity, "Sucesso: "+obj.get("Pin").getAsString(), Toast.LENGTH_LONG).show();
+
+
+
+                                }
+
+
+                            }catch (Exception ex){}
+
+
+
+
+                         /*   try{
 
 
                                 if (result.get("retorno").getAsString().equals("YES")){
@@ -80,7 +101,7 @@ public class modelchekPin {
 
                                 Toast.makeText(mainActivity, " Error "+ex, Toast.LENGTH_SHORT).show();
                             }
-
+                    */
                         }
                     });
 
