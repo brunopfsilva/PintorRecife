@@ -3,6 +3,7 @@ package pintor.mercadobit.pt.pintorrecife;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -38,8 +39,10 @@ public class MainActivity extends AppCompatActivity
     View layout;
     LayoutInflater inflater;
     String pin;
+    SharedPreferences.Editor preferencesput;
 
-   /** @BindView(R.id.inputPin) **/
+
+    /** @BindView(R.id.inputPin) **/
     EditText inputPin;
 
     @Override
@@ -57,17 +60,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
-                //faz uma chamada
-                String numero = "5581988735652";
-
-                Uri uri = Uri.parse("tel:" +numero);
-                Intent intent = new Intent(Intent.ACTION_CALL, uri);
-                if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.CALL_PHONE},1); //solicita a permissao novamente caso ela não tenha sido conxedida
-                    return;
-                }
-                startActivity(intent);
-
+                callme(view);
 
             }
         });
@@ -91,7 +84,7 @@ public class MainActivity extends AppCompatActivity
 
 
         pb.setVisibility(View.VISIBLE);
-
+        preferencesput = getSharedPreferences("USER_INFORMATION",MODE_PRIVATE).edit();
 
 
     }
@@ -140,8 +133,6 @@ public class MainActivity extends AppCompatActivity
 
     public void getPin(){
 
-
-
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -174,9 +165,14 @@ public class MainActivity extends AppCompatActivity
                                     @Override
                                     public void run() {
 
+
                                         pb.setVisibility(View.VISIBLE);
 
                                         pin = getViewContent(root,R.id.inputPin);
+
+                                        preferencesput.putString("pin",pin);
+                                        preferencesput.commit();
+                                        preferencesput.apply();
 
                                         presenterMain.sendpin(pin);
 
@@ -294,7 +290,21 @@ public class MainActivity extends AppCompatActivity
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(getBaseContext(), "dados syncronizados", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), "Pin Valido", Toast.LENGTH_SHORT).show();
+
+                presenterMain.getDataCliente();
+            }
+        });
+
+    }
+
+    public void actionDate() {
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(getBaseContext(), "Dados Carregados", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getBaseContext(),MainActivity.class));
             }
         });
 

@@ -1,13 +1,13 @@
 package pintor.mercadobit.pt.pintorrecife.presenter;
 
 import pintor.mercadobit.pt.pintorrecife.MainActivity;
+import pintor.mercadobit.pt.pintorrecife.model.modelDownloadData;
 import pintor.mercadobit.pt.pintorrecife.model.modelchekPin;
 
 
 public class PresenterMain {
 
     private MainActivity mainActivity;
-    private modelchekPin modelchekPin;
 
     public PresenterMain(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
@@ -22,6 +22,16 @@ public class PresenterMain {
         return pin;
     }
 
+    public void getDataCliente(){
+
+
+
+        //api pegar do servidor
+        new modelDownloadData.get_data_from_server(mainActivity).execute(); //não esquecer de por o .execute(); para chamar o async
+
+    }
+
+
     public void resultpin(){
 
         mainActivity.pinMsg();
@@ -30,4 +40,9 @@ public class PresenterMain {
     }
 
 
+    public void resultdata() {
+
+        mainActivity.actionDate();
+
+    }
 }

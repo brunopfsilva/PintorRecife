@@ -27,12 +27,11 @@ public class modelchekPin {
 
        // ProgressDialog dialog;
         SharedPreferences.Editor preferencesput;
+        SharedPreferences preferencesget;
 
         MainActivity mainActivity;
 
         PresenterMain presenterMain;
-
-        Context ctx;
 
         public get_pin_from_server(MainActivity mainActivity){
 
@@ -41,7 +40,7 @@ public class modelchekPin {
             this.mainActivity = mainActivity;
             presenterMain = new PresenterMain(mainActivity);
 
-
+            preferencesget = mainActivity.getSharedPreferences("USER_INFORMATION",MODE_PRIVATE);
         }
 
         @Override
@@ -49,12 +48,11 @@ public class modelchekPin {
 
             Ion.getDefault(mainActivity).getConscryptMiddleware().enable(false); //remove erro IonConscrypt: Conscrypt initialization failed.
 
-
             //corrigir erro unknow host exception
             Ion.with(mainActivity)
                     .load(Common.GET_PIN)
                //     .addHeader("Content-Type", "text/html")
-                    .setBodyParameter("pin", "1991")
+                    .setBodyParameter("pin", preferencesget.getString("pin","pin"))
                     .asJsonObject()
                     .setCallback(new FutureCallback<JsonObject>() {
                         @Override
