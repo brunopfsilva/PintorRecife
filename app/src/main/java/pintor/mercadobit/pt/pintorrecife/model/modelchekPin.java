@@ -58,11 +58,11 @@ public class modelchekPin {
                         @Override
                         public void onCompleted(Exception e, JsonObject result) {
 
-                            Toast.makeText(mainActivity, " "+result, Toast.LENGTH_LONG).show();
+
 
 
                           /*  try{
-
+                            Toast.makeText(mainActivity, " "+result, Toast.LENGTH_LONG).show();
                                 for (int i = 0; i < result.size(); i++) {
 
                                     JsonObject obj = result.get(i).getAsJsonObject();

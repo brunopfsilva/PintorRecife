@@ -21,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import butterknife.BindView;
@@ -40,6 +41,10 @@ public class MainActivity extends AppCompatActivity
     LayoutInflater inflater;
     String pin;
     SharedPreferences.Editor preferencesput;
+    SharedPreferences preferencesget;
+    TextView telefone;
+    TextView txtemail;
+
 
 
     /** @BindView(R.id.inputPin) **/
@@ -52,6 +57,7 @@ public class MainActivity extends AppCompatActivity
         ButterKnife.bind(MainActivity.this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        initViews();
         //instancia de presente main
         presenterMain = new PresenterMain(this);
 
@@ -66,6 +72,7 @@ public class MainActivity extends AppCompatActivity
         });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -74,8 +81,14 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        View header = navigationView.getHeaderView(0);
+        txtemail = (TextView) header.findViewById(R.id.txtemail);
+        if(!preferencesget.getString("email_cliente","").equals("null")){
+            txtemail.setText("Insira seu id");
+        }
+        txtemail.setText(preferencesget.getString("email",""));
 
-        initViews();
+
         pb.setVisibility(View.INVISIBLE);
 
     }
@@ -85,6 +98,9 @@ public class MainActivity extends AppCompatActivity
 
         pb.setVisibility(View.VISIBLE);
         preferencesput = getSharedPreferences("USER_INFORMATION",MODE_PRIVATE).edit();
+        preferencesget = getSharedPreferences("USER_INFORMATION",MODE_PRIVATE);
+
+
 
 
     }
@@ -245,6 +261,11 @@ public class MainActivity extends AppCompatActivity
                 .setNegativeButton(" - ", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
+                        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                        layout = inflater.inflate(R.layout.activity_contacto, null);
+                        telefone = (TextView)layout.findViewById(R.id.id_telefone);
+                        telefone.setText(preferencesget.getString("telefone",""));
                         pb.setVisibility(View.VISIBLE);
                         startActivity(new Intent(getBaseContext(),MainActivity.class));
                         finish();

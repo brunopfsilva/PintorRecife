@@ -48,6 +48,7 @@ public class modelDownloadData {
 
             Ion.getDefault(mainActivity).getConscryptMiddleware().enable(false); //remove erro IonConscrypt: Conscrypt initialization failed.
 
+            preferencesput = mainActivity.getSharedPreferences("USER_INFORMATION",MODE_PRIVATE).edit();
 
             Ion.with(mainActivity)
                     .load(Common.GETDADOS)
@@ -59,8 +60,6 @@ public class modelDownloadData {
                         public void onCompleted(Exception e, JsonArray result) {
 
                             try{
-
-                                SharedPreferences.Editor preferencesput = mainActivity.getSharedPreferences("USER_INFORMATION",MODE_PRIVATE).edit();
 
 
                                 for (int i = 0; i < result.size(); i++) {
@@ -78,6 +77,7 @@ public class modelDownloadData {
                                         preferencesput.putString("texto_do_app",obj.get("texto_do_app").getAsString());
                                         preferencesput.putString("end_cliente",obj.get("end_cliente").getAsString());
                                         preferencesput.putString("pin_do_Cliente",obj.get("pin_do_Cliente").getAsString());
+                                        preferencesput.commit();
                                         preferencesput.apply();
                                         presenterMain.resultdata();
 
@@ -87,7 +87,9 @@ public class modelDownloadData {
                                 }
 
 
-                            }catch (Exception ex){}
+                            }catch (Exception ex){
+                                Toast.makeText(mainActivity, ""+ex, Toast.LENGTH_SHORT).show();
+                            }
 
 
 
