@@ -53,7 +53,7 @@ public class modelDownloadData {
             Ion.with(mainActivity)
                     .load(Common.GETDADOS)
                     //     .addHeader("Content-Type", "text/html")
-                    .setBodyParameter("email",preferencesget.getString("email","email"))
+                    .setBodyParameter("email",preferencesget.getString("email",""))
                     .asJsonArray()
                     .setCallback(new FutureCallback<JsonArray>() {
                         @Override
@@ -77,6 +77,7 @@ public class modelDownloadData {
                                         preferencesput.putString("texto_do_app",obj.get("texto_do_app").getAsString());
                                         preferencesput.putString("end_cliente",obj.get("end_cliente").getAsString());
                                         preferencesput.putString("pin_do_Cliente",obj.get("pin_do_Cliente").getAsString());
+                                        preferencesput.putString("nome_app",obj.get("nome_app").getAsString());
                                         preferencesput.commit();
                                         preferencesput.apply();
                                         presenterMain.resultdata();
