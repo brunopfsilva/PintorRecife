@@ -42,8 +42,8 @@ public class MainActivity extends AppCompatActivity
     String pin;
     SharedPreferences.Editor preferencesput;
     SharedPreferences preferencesget;
-    TextView telefone;
-    TextView txtemail;
+    TextView telefone,txt_nome_app,txtemail;
+
 
 
 
@@ -83,10 +83,13 @@ public class MainActivity extends AppCompatActivity
 
         View header = navigationView.getHeaderView(0);
         txtemail = (TextView) header.findViewById(R.id.txtemail);
+        txt_nome_app = (TextView)header.findViewById(R.id.txt_nome_app);
         if(!preferencesget.getString("email_cliente","").equals("null")){
             txtemail.setText("Insira seu id");
         }
         txtemail.setText(preferencesget.getString("email",""));
+        txt_nome_app.setText(preferencesget.getString("nome_app",""));
+
 
 
         pb.setVisibility(View.INVISIBLE);

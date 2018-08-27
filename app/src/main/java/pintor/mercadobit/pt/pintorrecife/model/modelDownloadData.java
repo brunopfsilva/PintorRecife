@@ -70,7 +70,7 @@ public class modelDownloadData {
                                         preferencesput.putString("email_cliente",obj.get("email_cliente").getAsString());
                                         preferencesput.putString("nome_cliente",obj.get("nome_cliente").getAsString());
                                         preferencesput.putString("telefone",obj.get("telefone").getAsString());
-                                        preferencesput.putString("link_psrtilha",obj.get("link_psrtilha").getAsString());
+                                        preferencesput.putString("link_partilha",obj.get("link_partilha").getAsString());
                                         preferencesput.putString("link_social",obj.get("link_social").getAsString());
                                         preferencesput.putString("link_chat",obj.get("link_chat").getAsString());
                                         preferencesput.putString("photo_link",obj.get("photo_link").getAsString());
